@@ -2,4 +2,9 @@
     <string name="app_name">Foodipy</string>
     <string name="background_splash">Background Splash</string>
     <string name="get_started">Get Started</string>
+    <string name="category_image">Category Image</string>
+    <string name="meal_category">Meal Category</string>
+    <string name="meal_image">Meal Image</string>
+    <string name="meal_list">Meal List</string>
+    <string name="category_meal_list">Category Meal List</string>
 </resources>
