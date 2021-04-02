@@ -5,12 +5,12 @@ import com.example.foodipy.entities.converter.ListCategoryConverter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "Categories")
-data class Categories(
+@Entity(tableName = "Category")
+data class Category(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
 
-    @ColumnInfo(name = "listCategoryItems")
+    @ColumnInfo(name = "categoryItems")
     @Expose
     @SerializedName("categories")
     @TypeConverters(ListCategoryConverter::class)

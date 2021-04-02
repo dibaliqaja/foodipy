@@ -1,30 +1,26 @@
 package com.example.foodipy.entities.converter
 
 import androidx.room.TypeConverter
-import com.example.foodipy.entities.Categories
+import com.example.foodipy.entities.CategoryItems
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class ListCategoryConverter {
     @TypeConverter
-    fun fromListCategory(categories: List<Categories>): String? {
-        return run {
-            val gson = Gson()
-            val type = object : TypeToken<Categories>() {
+    fun fromCategoryList(category: List<CategoryItems>):String?{
+        val gson = Gson()
+        val type = object : TypeToken<CategoryItems>(){
 
-            }.type
-            gson.toJson(categories,type)
-        }
+        }.type
+        return gson.toJson(category,type)
     }
 
     @TypeConverter
-    fun toListCategory(categories: String): List<Categories>? {
-        return run {
-            val gson = Gson()
-            val type = object : TypeToken<Categories>() {
+    fun toCategoryList ( categoryString: String):List<CategoryItems>?{
+        val gson = Gson()
+        val type = object :TypeToken<CategoryItems>(){
 
-            }.type
-            gson.fromJson(categories,type)
-        }
+        }.type
+        return  gson.fromJson(categoryString,type)
     }
 }

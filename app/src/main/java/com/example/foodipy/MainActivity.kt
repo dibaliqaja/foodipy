@@ -5,12 +5,15 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodipy.adapter.CategoryAdapter
 import com.example.foodipy.adapter.MealAdapter
+import com.example.foodipy.database.RecipeDatabase
+import com.example.foodipy.entities.CategoryItems
 import com.example.foodipy.entities.Recipes
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    private var arrayListCategory = ArrayList<Recipes>()
+    private var arrayListCategory = ArrayList<CategoryItems>()
     private var arrayListMeal = ArrayList<Recipes>()
 
     private var categoryAdapter = CategoryAdapter()
@@ -20,13 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Temporary Data
-        arrayListCategory.add(Recipes(1, "Beef"))
-        arrayListCategory.add(Recipes(2, "Chicken"))
-        arrayListCategory.add(Recipes(3, "Desert"))
-        arrayListCategory.add(Recipes(4, "Lamb"))
-
-        categoryAdapter.setData(arrayListCategory)
+        getData()
 
         // Temporary Data
         arrayListMeal.add(Recipes(1, "Beef Burger"))
@@ -36,10 +33,21 @@ class MainActivity : AppCompatActivity() {
 
         mealAdapter.setData(arrayListMeal)
 
-        rv_category.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv_category.adapter = categoryAdapter
-
         rv_meal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_meal.adapter = mealAdapter
+    }
+
+    private fun getData() {
+        launch {
+            this.let {
+                val category = RecipeDatabase.getDatabase(this@MainActivity).recipeDao().getAllCategory()
+                arrayListCategory = category as ArrayList<CategoryItems>
+                arrayListCategory.reverse()
+                categoryAdapter.setData(arrayListCategory)
+
+                rv_category.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                rv_category.adapter = categoryAdapter
+            }
+        }
     }
 }
