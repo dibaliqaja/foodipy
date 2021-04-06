@@ -6,13 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.foodipy.dao.RecipeDao
-import com.example.foodipy.entities.Category
-import com.example.foodipy.entities.CategoryItems
-import com.example.foodipy.entities.Recipes
+import com.example.foodipy.entities.*
 import com.example.foodipy.entities.converter.ListCategoryConverter
+import com.example.foodipy.entities.converter.ListMealConverter
 
-@Database(entities = [Recipes::class, Category::class, CategoryItems::class], version = 1, exportSchema = false)
-@TypeConverters(ListCategoryConverter::class)
+@Database(entities = [Recipes::class, Category::class, CategoryItems::class, Meal::class, MealItems::class], version = 1, exportSchema = false)
+@TypeConverters(ListCategoryConverter::class, ListMealConverter::class)
 abstract class RecipeDatabase: RoomDatabase() {
     companion object {
         private var recipeDatabase: RecipeDatabase? = null
