@@ -1,7 +1,6 @@
 package com.example.foodipy.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +16,7 @@ class MealAdapter: RecyclerView.Adapter<MealAdapter.RecipeViewHolder>() {
     private var context: Context? = null
     private var listMeal = ArrayList<MealItems>()
 
-    class RecipeViewHolder(view: View): RecyclerView.ViewHolder(view) {
-
-    }
+    class RecipeViewHolder(view: View): RecyclerView.ViewHolder(view) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         context = parent.context

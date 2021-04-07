@@ -7,4 +7,13 @@
     <string name="meal_image">Meal Image</string>
     <string name="meal_list">Meal List</string>
     <string name="category_list">Category List</string>
+    <string name="back_button">Back Button</string>
+    <string name="time_icon">Time Icon</string>
+    <string name="_30_min">30 min</string>
+    <string name="_247_cals">247 cals</string>
+    <string name="_3_persons">3 persons</string>
+    <string name="category_name">Category Name</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="video">Video</string>
 </resources>

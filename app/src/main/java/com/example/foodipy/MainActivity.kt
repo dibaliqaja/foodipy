@@ -1,8 +1,8 @@
 package com.example.foodipy
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodipy.adapter.CategoryAdapter
 import com.example.foodipy.adapter.MealAdapter
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
         getCategoryData()
 
         categoryAdapter.setClickListener(onClicked)
-//        mealAdapter.setClickListener(onClickedCategory)
+        mealAdapter.setClickListener(onClickedMeal)
     }
 
     private val onClicked = object : CategoryAdapter.OnItemClickListener{
@@ -35,13 +35,13 @@ class MainActivity : BaseActivity() {
         }
     }
 
-//    private val onClickedCategory  = object : CategoryAdapter.OnItemClickListener{
-//        override fun onClicked(id: String) {
-//            val intent = Intent(this@MainActivity, DetailActivity::class.java)
-//            intent.putExtra("id", id)
-//            startActivity(intent)
-//        }
-//    }
+    private val onClickedMeal  = object : MealAdapter.OnItemClickListener{
+        override fun onClicked(id: String) {
+            val intent = Intent(this@MainActivity, DetailActivity::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }
+    }
 
     private fun getCategoryData() {
         launch {
